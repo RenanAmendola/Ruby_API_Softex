@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 
-  resources :products   #------------ Gera todos os comandos(GET, POST, PUT, DELETE)
+  resources :products do  #------------ Gera todos os comandos(GET, POST, PUT, DELETE)
+    collection do
+      get 'operating_systems', to: 'products#operating_systems'
+      get 'electronics', to: 'products#electronics'
+    end
+  end   
   #Desta forma fica mais facil fazer um controller com tudo
 
   get '/info', to: 'info#show'
